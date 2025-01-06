@@ -25,7 +25,7 @@ jobs:
       run: |
         sudo apt update
         sudo apt install git -y
-        echo "$PASSWORD" | docker login --username=$USER --password-stdin images.onwalk.net
+        echo "$PASSWORD" | docker login --username=$USER --password-stdin global-images.onwalk.net
 
     - name: sync images
       shell: bash
@@ -38,5 +38,5 @@ jobs:
           docker tag  $src_image $dest_image
           docker push $dest_image
         }
-        sync_image "docker.io/bitnami/redis-cluster:7.4.1-debian-12-r3" "images.onwalk.net/public/redis-cluster:7.4.1-debian-12-r3"
-        sync_image "docker.io/bitnami/redis:7.4.1-debian-12-r3" "images.onwalk.net/public/redis:7.4.1-debian-12-r3"
+        #sync_image "docker.io/bitnami/redis-cluster:7.4.1-debian-12-r3" "images.onwalk.net/public/redis-cluster:7.4.1-debian-12-r3"
+        sync_image "docker.io/bitnami/redis:7.4.1-debian-12-r3" "global-images.onwalk.net/public/redis:7.4.1-debian-12-r3"
